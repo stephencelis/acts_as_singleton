@@ -1,0 +1,7 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+init.rb
+lib/acts_as_singleton.rb
+test/acts_as_singleton_test.rb
