@@ -6,6 +6,8 @@ require "acts_as_singleton"
 
 Hoe.new("acts_as_singleton", ActiveRecord::Singleton::VERSION) do |p|
   p.developer("Stephen Celis", "stephen@stephencelis.com")
+  p.remote_rdoc_dir = ''
+  p.rubyforge_name = %q{actsassingleton}
 end
 
 require 'rake'
@@ -28,6 +30,6 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'acts_as_singleton'
   rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('README.txt')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

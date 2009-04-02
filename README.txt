@@ -11,6 +11,8 @@ It just makes sense to store mutable, site-wide, admin-level settings in the
 database. Right? A key-value table may be more flexible, but maybe we don't
 want to be flexible!
 
+If you truly want that flexibility: http://github.com/stephencelis/kvc
+
 
 == FEATURES/PROBLEMS
 
@@ -51,12 +53,17 @@ Don't even try to access it otherwise. It won't work!
 
 === As a gem
 
-Install:
+From RubyForge:
+
+  % gem install acts_as_singleton
+
+
+Or GitHub:
 
   % gem install stephencelis-acts_as_singleton --source=http://gems.github.com
 
 
-Configure:
+And configure:
 
   config.gem "stephencelis-acts_as_singleton",
     :lib => "acts_as_singleton",
@@ -65,7 +72,15 @@ Configure:
 
 === As a plugin
 
+Traditional:
+
   % script/plugin install git://github.com/stephencelis/acts_as_singleton.git
+
+
+Or, as a submodule:
+
+  % git submodule add git://github.com/stephencelis/acts_as_singleton.git \
+                      vendor/plugins/acts_as_singleton
 
 
 == LICENSE
