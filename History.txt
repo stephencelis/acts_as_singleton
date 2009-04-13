@@ -1,3 +1,10 @@
+=== 0.0.2 / 2009-04-13
+
+* 1 minor enhancement
+
+  * Update regular expression to allow for a needed method.
+
+
 === 0.0.1 / 2009-03-30
 
 * 1 major enhancement
