@@ -65,4 +65,10 @@ class ActsAsSingletonTest < ActiveSupport::TestCase
     assert_no_match(/id: .+?,/, HomepageSettings.inspect)
     assert_no_match(/id: .+?,/, HomepageSettings.instance.inspect)
   end
+
+  test "should be mutable" do
+    assert_nothing_raised do
+      HomepageSettings.instance.update_attributes! :welcome_message => "OH HAI"
+    end
+  end
 end
