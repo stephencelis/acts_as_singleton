@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{acts_as_singleton}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Celis"]
-  s.date = %q{2009-04-13}
+  s.date = %q{2009-11-29}
   s.description = %q{A lightweight singleton library for your Active Record models.  It just makes sense to store mutable, site-wide, admin-level settings in the database. Right? A key-value table may be more flexible, but maybe we don't want to be flexible!  If you truly want that flexibility: http://github.com/stephencelis/kvc}
   s.email = ["stephen@stephencelis.com"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.txt"]
