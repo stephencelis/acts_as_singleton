@@ -1,3 +1,10 @@
+=== 0.0.3 / 2009-11-29
+
+* 1 bugfix
+
+  * Don't make ActiveRecord::Base.allocate private.
+
+
 === 0.0.2 / 2009-04-13
 
 * 1 minor enhancement
