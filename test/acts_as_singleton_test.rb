@@ -10,6 +10,7 @@ def setup_db
   ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => ':memory:')
   ActiveRecord::Schema.define(:version => 1) do
     create_table :homepage_settings do |t|
+      t.string :type
       t.text :welcome_message
       t.timestamp :published_at, :expired_at
     end
@@ -25,6 +26,9 @@ end
 setup_db
 class HomepageSettings < ActiveRecord::Base
   acts_as_singleton
+end
+
+class LoggedInSettings < HomepageSettings
 end
 
 class ActsAsSingletonTest < ActiveSupport::TestCase
@@ -70,6 +74,16 @@ class ActsAsSingletonTest < ActiveSupport::TestCase
   test "should be mutable" do
     assert_nothing_raised do
       HomepageSettings.instance.update_attributes! :welcome_message => "OH HAI"
+    end
+  end
+
+  test "should honor STI" do
+    ActiveRecord::Base.logger = STDOUT
+    ActiveRecord::Base.clear_active_connections!
+    HomepageSettings.instance # Fetch parent.
+    LoggedInSettings.instance # Fetch child.
+    assert_nothing_raised ActiveRecord::SubclassNotFound do
+      LoggedInSettings.instance # Fetch again.
     end
   end
 end
