@@ -4,9 +4,10 @@ require 'active_record'
 require "#{File.dirname(__FILE__)}/../init"
 require 'active_support'
 require 'active_support/test_case'
+ActiveRecord::Migration.verbose = false
 
 def setup_db
-  ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :dbfile => ':memory:')
+  ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => ':memory:')
   ActiveRecord::Schema.define(:version => 1) do
     create_table :homepage_settings do |t|
       t.text :welcome_message

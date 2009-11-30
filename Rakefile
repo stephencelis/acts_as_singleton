@@ -1,14 +1,7 @@
 $: << File.dirname(__FILE__) + "/lib"
 require "rubygems"
-require "hoe"
 require "active_record"
 require "acts_as_singleton"
-
-Hoe.new("acts_as_singleton", ActiveRecord::Singleton::VERSION) do |p|
-  p.developer("Stephen Celis", "stephen@stephencelis.com")
-  p.remote_rdoc_dir = ''
-  p.rubyforge_name = %q{actsassingleton}
-end
 
 require 'rake'
 require 'rake/testtask'
