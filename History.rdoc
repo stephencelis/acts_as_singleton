@@ -1,3 +1,10 @@
+=== 0.0.4 / 2010-01-21
+
+* 1 bugfix
+
+  * Allow 'find' calls from ActiveRecord.
+
+
 === 0.0.3 / 2009-11-29
 
 * 1 bugfix
