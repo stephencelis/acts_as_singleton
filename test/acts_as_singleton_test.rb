@@ -1,5 +1,4 @@
 require 'test/unit'
-require 'rubygems'
 require 'active_record'
 require "#{File.dirname(__FILE__)}/../init"
 require 'active_support'
@@ -14,6 +13,10 @@ def setup_db
       t.text :welcome_message
       t.timestamp :published_at, :expired_at
     end
+
+    create_table :cottages do |t|
+      t.belongs_to :home_away_from_home, :polymorphic => true
+    end
   end
 end
 
@@ -26,9 +29,15 @@ end
 setup_db
 class HomepageSettings < ActiveRecord::Base
   acts_as_singleton
+  has_many :cottages, :as => :home_away_from_home
 end
 
 class LoggedInSettings < HomepageSettings
+end
+
+class Cottage < ActiveRecord::Base
+  belongs_to :home_away_from_home, :polymorphic => true
+  validates_associated :home_away_from_home
 end
 
 class ActsAsSingletonTest < ActiveSupport::TestCase
@@ -38,6 +47,10 @@ class ActsAsSingletonTest < ActiveSupport::TestCase
 
   teardown do
     teardown_db
+
+    HomepageSettings.instance_eval do
+      remove_instance_variable :@instance if defined? @instance
+    end
   end
 
   test "should be provocative" do
@@ -78,12 +91,15 @@ class ActsAsSingletonTest < ActiveSupport::TestCase
   end
 
   test "should honor STI" do
-    ActiveRecord::Base.logger = STDOUT
     ActiveRecord::Base.clear_active_connections!
     HomepageSettings.instance # Fetch parent.
     LoggedInSettings.instance # Fetch child.
     assert_nothing_raised ActiveRecord::SubclassNotFound do
       LoggedInSettings.instance # Fetch again.
     end
+  end
+
+  test "should honor polymorphism" do
+    HomepageSettings.instance.cottages.create
   end
 end

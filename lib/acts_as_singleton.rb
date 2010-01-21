@@ -46,6 +46,14 @@ module ActiveRecord
           def inspect
             super.sub(/id: .+?, /) {} # Irrelevant.
           end
+
+          def find(*args)
+            unless caller.first.include?("lib/active_record")
+              raise NoMethodError,
+                "private method `find' called for #{inspect}"
+            end
+            super # (:first) || create
+          end
         end
 
         def clone
