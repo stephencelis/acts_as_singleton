@@ -61,6 +61,7 @@ class ActsAsSingletonTest < ActiveSupport::TestCase
     assert_raise(NoMethodError) { HomepageSettings.all }
     assert_raise(NoMethodError) { HomepageSettings.first }
     assert_raise(NoMethodError) { HomepageSettings.find }
+    assert_raise(NoMethodError) { HomepageSettings.find_by_sql("") }
     assert_raise(NoMethodError) { HomepageSettings.named_scope }
     assert_raise(NoMethodError) { HomepageSettings.minimum }
     assert_raise(NoMethodError) { HomepageSettings.maximum }
