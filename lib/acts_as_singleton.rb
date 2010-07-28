@@ -17,7 +17,7 @@ module ActiveRecord
   # clash with the <tt>ActiveRecord::Singleton::PRIVATE</tt> pattern, or
   # define them after including the module.
   module Singleton
-    VERSION = "0.0.2"
+    VERSION = "0.0.5"
 
     # This pattern matches methods that should be made private because they
     # should not be used in singleton classes.
