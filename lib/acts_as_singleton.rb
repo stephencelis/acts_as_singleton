@@ -22,7 +22,7 @@ module ActiveRecord
     # This pattern matches methods that should be made private because they
     # should not be used in singleton classes.
     # PRIVATE = /^all(?:oc.*)?$|alloc|create|find|firs|mini|max|new|d_sco|^upd/
-    PRIVATE = /^all$|create|find|firs|mini|max|new|d_sco|^upd/
+    PRIVATE = /^all$|create(?!_reflection)|find|firs|mini|max|new|d_sco|^upd/
 
     def self.included(model)
       model.class_eval do
@@ -47,20 +47,20 @@ module ActiveRecord
             super.sub(/id: .+?, /) {} # Irrelevant.
           end
 
-          def find(*args)
+          def find(*)
             unless caller.first.include?("lib/active_record")
               raise NoMethodError,
                 "private method `find' called for #{inspect}"
             end
-            super # (:first) || create
+            super
           end
 
-          def find_by_sql(sql)
+          def find_by_sql(*)
             unless caller.first.include?("lib/active_record")
               raise NoMethodError,
                 "private method `find_by_sql' called for #{inspect}"
             end
-            super # (:first) || create
+            super
           end
         end
 
