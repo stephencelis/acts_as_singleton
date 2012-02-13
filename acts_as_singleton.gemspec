@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.files = ["History.rdoc", "Manifest.txt", "README.rdoc", "Rakefile", "init.rb", "lib/acts_as_singleton.rb", "test/acts_as_singleton_test.rb"]
 
-  s.add_dependency "activerecord", "~> 3.1.0"
+  s.add_dependency "activerecord", ">= 3.1.0"
   s.add_development_dependency "rake"
   s.add_development_dependency "sqlite3-ruby"
 
