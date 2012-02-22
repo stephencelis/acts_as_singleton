@@ -22,7 +22,7 @@ module ActiveRecord
     # This pattern matches methods that should be made private because they
     # should not be used in singleton classes.
     PRIVATE = \
-      /^all$|create(?!_reflection|_callback)|find(?!er)|firs|mini|max|new|d_sco|^upd/
+      /^all$|create(?!_reflection|_callback)|find(?!er|_callback)|firs|mini|max|new|d_sco|^upd/
 
     def self.included(model)
       model.class_eval do
