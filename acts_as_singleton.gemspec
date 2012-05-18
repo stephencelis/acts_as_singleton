@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "acts_as_singleton"
-  s.version = "0.0.7"
+  s.version = "0.0.8"
   s.summary = "A lightweight singleton library for your Active Record models."
   s.description = "It just makes sense to store mutable, site-wide, admin-level settings in the database. Right? A key-value table may be more flexible, but maybe we don't want to be flexible! If you truly want that flexibility: http://github.com/stephencelis/kvc"
 
