@@ -43,10 +43,6 @@ module ActiveRecord
             first || create
           end
 
-          def inspect
-            super.sub(/id: .+?, /) {} # Irrelevant.
-          end
-
           def find(*)
             unless caller.first.include?("lib/active_record")
               raise NoMethodError,
