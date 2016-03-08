@@ -50,14 +50,19 @@ Don't even try to access it otherwise. It won't work!
 
 
 == INSTALL
+=== Rails 3+
 
-=== As a gem
+  #Gemfile
+  gem 'acts_as_singleton', '~> 0.0.8'
+  
+then run
+  bundle install
 
-Configure:
+
+=== Rails 2
 
   # config/environment.rb
   config.gem "acts_as_singleton"
-
 
 And install:
 
